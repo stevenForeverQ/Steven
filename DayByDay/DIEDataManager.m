@@ -9,6 +9,7 @@
 #import "DIEDataManager.h"
 #import "DIENetworkManager.h"
 #import "DIEApiConfig.h"
+#import "DIENotificationConfig.h"
 
 static DIEDataManager *instnce;
 @implementation DIEDataManager
@@ -145,6 +146,7 @@ static DIEDataManager *instnce;
     for (NSArray *array2 in array) {
         if ([array2 isKindOfClass:[NSDictionary class]]) {
             [_SocialNewsArray addObject:array2];
+            DIEPost(kDIESociaNewsUpdateNotif, nil);
         }
     }
     NSLog(@"%@",_SocialNewsArray);

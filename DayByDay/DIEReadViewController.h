@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface DIEReadViewController : UIViewController
+@property (nonatomic, assign) BOOL shouldInitPullToRefresh;
+
+- (void)shouldAddPullToRefresh:(BOOL)isAdd;
 
 @end

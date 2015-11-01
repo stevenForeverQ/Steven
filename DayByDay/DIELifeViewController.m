@@ -13,6 +13,8 @@
 #import "DIENetworkManager.h"
 #import "DIEDataManager.h"
 #import "ScrollViewHeaderView.h"
+#import "DIEMovieViewController.h"
+#import "DIEHomeViewController.h"
 const static CGFloat kMinimumInteritemSpacing = 10.f;
 @interface DIELifeViewController()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -74,6 +76,7 @@ static NSString * const firstCell = @"firstCell";
 //    [_LifeCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"];
     _LifeTableView.dataSource = self;
     _LifeTableView.delegate = self;
+    _LifeTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.LifeTableView];
    
 }
@@ -230,31 +233,18 @@ static NSString * const firstCell = @"firstCell";
 {
        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    if (indexPath.section==0 && indexPath.row==0) {
+        DIEMovieViewController *movieCtr=[DIEMovieViewController new];
+        DIEHomeViewController *homeCtr =[ DIEHomeViewController new];
+        self.tabBarController.tabBar.hidden=YES;
+        self.hidesBottomBarWhenPushed=YES;
+        
+        [self.navigationController pushViewController:movieCtr animated:YES];
+        
+    }
 }
 
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{//item大小
-//    CGSize size2=self.view.bounds.size;
-//    CGFloat wid=size2.width/4-kMinimumInteritemSpacing*2;
-//    CGFloat wid2=size2.width/3-kMinimumInteritemSpacing*2;
-//    if (indexPath.section==0) {
-//        return CGSizeMake(wid,wid*4/3);
-//    }
-//    else
-//    {
-//        return CGSizeMake(wid2, wid2*4/3);
-//    }
-//    
-//}
-//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-//{//section
-//    if (section == 0) {
-//        return UIEdgeInsetsMake(30, 10, 20, 10);;
-//    }else
-//    {
-//        return UIEdgeInsetsMake(10, 10, 10, 10);
-//    }
-//}
+
 
 
 @end
