@@ -65,6 +65,7 @@ static DIEDataManager *instnce;
     for (NSArray *array2 in array) {
         if ([array2 isKindOfClass:[NSDictionary class]]) {
             [_AmusementArray addObject:array2];
+            DIEPost(kDIEAmusementUpdateNotif, nil);
         }
     }
     NSLog(@"%@",_AmusementArray);
@@ -78,6 +79,7 @@ static DIEDataManager *instnce;
 - (void)parseJokeArray:(NSArray *)array
 {   [_JokeArray removeAllObjects];
     [_JokeArray addObjectsFromArray:array];
+    DIEPost(kDIEJokeUpdateNotif, nil);
 }
 #pragma mark Sports Update
 - (void)UpdateWithSportsApiKey
@@ -90,6 +92,7 @@ static DIEDataManager *instnce;
     for (NSArray *array2 in array) {
         if ([array2 isKindOfClass:[NSDictionary class]]) {
             [_SportsArray addObject:array2];
+            DIEPost(kDIESportsUpdateNotif, nil);
         }
     }
     NSLog(@"%@",_SportsArray);
@@ -105,6 +108,7 @@ static DIEDataManager *instnce;
     for (NSArray *array2 in array) {
         if ([array2 isKindOfClass:[NSDictionary class]]) {
             [_AnecdotesArray addObject:array2];
+            DIEPost(kDIEAnecdotesUpdateNotif, nil);
         }
     }
     NSLog(@"%@",_AnecdotesArray);
@@ -121,6 +125,7 @@ static DIEDataManager *instnce;
     for (NSArray *array2 in array) {
         if ([array2 isKindOfClass:[NSDictionary class]]) {
             [_HealthArray addObject:array2];
+            DIEPost(kDIEHealthUpdateNotif, nil);
         }
     }
     NSLog(@"%@",_HealthArray);
@@ -134,6 +139,7 @@ static DIEDataManager *instnce;
 {
     [_TravelsArray removeAllObjects];
     [_TravelsArray addObjectsFromArray:array];
+    DIEPost(kDIETravelsUpdateNotif, nil);
 }
 #pragma mark Social news Update 8;
 - (void)UpdateWithSocialNewsApiKey
@@ -162,6 +168,7 @@ static DIEDataManager *instnce;
     for (NSArray *array2 in array) {
         if ([array2 isKindOfClass:[NSDictionary class]]) {
             [_InternationalNewsArray addObject:array2];
+            DIEPost(kDIEInternationalNewsUpdateNotif, nil);
         }
     }
     NSLog(@"%@",_InternationalNewsArray);
@@ -177,6 +184,7 @@ static DIEDataManager *instnce;
     for (NSArray *array2 in array) {
         if ([array2 isKindOfClass:[NSDictionary class]]) {
             [_TechnologyNewsArray addObject:array2];
+            DIEPost(kDIETechnologyNewsUpdateNotif, nil);
         }
     }
     NSLog(@"%@",_TechnologyNewsArray);

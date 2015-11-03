@@ -88,7 +88,7 @@ static NSString *CellLogOutID = @"LogOutCell";
     self.tableView.contentInset = UIEdgeInsetsMake(-35, 0, 0, 0);
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"imageBg.jpg"]];
+//    self.tableView.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"imageBg.jpg"]];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellHasSwitchID];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellHasDIID];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellHasSecondLabelID];

@@ -109,7 +109,9 @@ static NSString * const firstCell = @"firstCell";
 
 - (void)loadNewData
 {
+//    [_LifeTableView removeHeader];
     _shouldInitPullToRefresh=NO;
+    
     [self shouldAddPullToRefresh:_shouldInitPullToRefresh];
     
     

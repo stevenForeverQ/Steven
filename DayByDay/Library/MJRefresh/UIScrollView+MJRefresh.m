@@ -44,7 +44,11 @@ static const char MJRefreshHeaderKey = '\0';
         [self didChangeValueForKey:@"header"]; // KVO
     }
 }
-
+- (void)removeHeader
+{
+    [self.header removeFromSuperview];
+    self.header=nil;
+}
 - (MJRefreshHeader *)header
 {
     return objc_getAssociatedObject(self, &MJRefreshHeaderKey);

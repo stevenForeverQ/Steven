@@ -11,6 +11,7 @@
 #import "DIEDataManager.h"
 #import "DIENotificationConfig.h"
 #import "DIESocialNewsModel.h"
+#import "DIEAnecdotesModel.h"
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
 #import "DIEReadWebViewController.h"
@@ -79,6 +80,7 @@
         self.readTableView.header = header;
     }else{
         self.readTableView.header = nil;
+        
     }
 }
 
@@ -87,14 +89,14 @@
     _shouldInitPullToRefresh=NO;
     [self shouldAddPullToRefresh:_shouldInitPullToRefresh];
     
-    [[DIEDataManager sharedManager] UpdateWithSocialNewsApiKey];
+    [[DIEDataManager sharedManager] UpdateWithAnecdotesApiKey];
     
 }
 - (void)loadReadData
 {
-    DIEAddObserver(self, @selector(didUpdate:), kDIESociaNewsUpdateNotif, nil);//网络加载成功后数据重载
+    DIEAddObserver(self, @selector(didUpdate:), kDIEAnecdotesUpdateNotif, nil);//网络加载成功后数据重载
 
-    [[DIEDataManager sharedManager] UpdateWithSocialNewsApiKey];
+    [[DIEDataManager sharedManager] UpdateWithAnecdotesApiKey];
 }
 - (void)didUpdate:(UIButton *)sender
 {
@@ -114,20 +116,20 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[DIEDataManager sharedManager].SocialNewsArray count];
+    return [[DIEDataManager sharedManager].AnecdotesArray count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell=nil;
     cell=[tableView dequeueReusableCellWithIdentifier:@"cell"];
-    DIESocialNewsModel * socialNewsModel=[DIESocialNewsModel modelFromJSONDictionary:[DIEDataManager sharedManager].SocialNewsArray[indexPath.row]];
-    cell.textLabel.text= socialNewsModel.desc;
+    DIEAnecdotesModel * anecdotesModel=[DIEAnecdotesModel modelFromJSONDictionary:[DIEDataManager sharedManager].AnecdotesArray[indexPath.row]];
+    cell.textLabel.text= anecdotesModel.desc;
     cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.textColor = [UIColor whiteColor];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:socialNewsModel.picUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-    [ReadWebArray addObject:socialNewsModel.url];
-    ReadWebUrl=socialNewsModel.url;
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:anecdotesModel.picUrl] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    [ReadWebArray addObject:anecdotesModel.url];
+    ReadWebUrl=anecdotesModel.url;
     cell.backgroundColor=[UIColor clearColor];
     return cell;
 }

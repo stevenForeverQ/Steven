@@ -20,4 +20,5 @@
 #pragma mark - other
 - (NSInteger)totalDataCount;
 @property (copy, nonatomic) void (^reloadDataBlock)(NSInteger totalDataCount);
+- (void)removeHeader;
 @end
